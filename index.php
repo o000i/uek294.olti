@@ -10,7 +10,13 @@ require_once 'controllers/HomeController.php';
 </head>
 <body>
 
-    <?php zeigeStartseite(); ?>
+<?php
+if (isset($_GET['page']) && $_GET['page'] == 'login') {
+    zeigeLogin();
+} else {
+    zeigeStartseite();
+}
+?>
 
 </body>
 </html>
