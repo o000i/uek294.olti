@@ -3,4 +3,4 @@
 
 <button>Produkte</button>
 <button>Kategorien</button>
-<button>Login</button>
+<button onclick="location.href='?page=login'">Login</button>
