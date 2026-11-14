@@ -1,50 +1,26 @@
-
 <?php
-session_start();
-
-$daten = json_decode(file_get_contents("php://input"), true);
-
-if (empty($daten["username"]) || empty($daten["password"])) {
-    http_response_code(400);
-    exit;
+require_once __DIR__ . '/../bootstrap.php';
+require_once __DIR__ . '/../models/ApiClient.php';
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Allow: POST');
+    jsonAntwort(405, ['message' => 'Bitte verwende das Anmeldeformular.']);
 }
-
-$cookies = [];
-
-$curl = curl_init("https://campus.csbe.ch/uek294/api/v1/authenticate");
-
-curl_setopt_array($curl, [
-    CURLOPT_POST => true,
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_HTTPHEADER => ["Content-Type: application/json"],
-    CURLOPT_POSTFIELDS => json_encode($daten),
-    CURLOPT_TIMEOUT => 15
+pruefeCsrf();
+$daten = leseJson();
+if (!is_string($daten['username'] ?? null) || !is_string($daten['password'] ?? null)
+    || trim($daten['username']) === '' || $daten['password'] === '') {
+    jsonAntwort(400, ['message' => 'Benutzername und Passwort sind erforderlich.']);
+}
+$antwort = (new ApiClient())->anfragen('POST', '/authenticate', [
+    'username' => trim($daten['username']), 'password' => $daten['password'],
 ]);
-
-curl_setopt($curl, CURLOPT_HEADERFUNCTION, function($curl, $header) use (&$cookies) {
-    if (stripos($header, "Set-Cookie:") === 0) {
-        $cookies[] = explode(";", trim(substr($header, 11)))[0];
-    }
-    return strlen($header);
-});
-
-$antwort = curl_exec($curl);
-$status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-curl_close($curl);
-
-if ($antwort === false) {
-    http_response_code(502);
-    exit;
-}
-
-if ($status === 204) {
-    if (empty($cookies)) {
-        http_response_code(502);
-        exit;
-    }
-
+if ($antwort['status'] === 204 && $antwort['cookies'] !== []) {
     session_regenerate_id(true);
-    $_SESSION["api_cookies"] = implode("; ", $cookies);
+    $_SESSION['api_cookies'] = implode('; ', $antwort['cookies']);
+    $_SESSION['csrf'] = bin2hex(random_bytes(32));
+    jsonAntwort(204);
 }
-
-http_response_code($status ?: 502);
+if ($antwort['status'] === 401) {
+    jsonAntwort(401, ['message' => 'Benutzername oder Passwort ist falsch.']);
+}
+jsonAntwort(502, ['message' => 'Die Anmeldung bei der Schul-API ist momentan nicht möglich. Bitte versuche es erneut.']);
