@@ -50,8 +50,8 @@ def footer(canvas,doc):
 p("PROJEKTDOKUMENTATION · ÜK 294","SmallCustom")
 p("Produktverwaltung","TitleCustom")
 p("Web-Frontend für Produkte und Kategorien")
-p("Projekt: Olti Ismajlaj\nDokumentstand / Version: 14.11.2026 / 0.9")
-p("Arbeitsfassung: Das persönliche Arbeitsjournal, die Reflexionen sowie die endgültige Abgabeprüfung sind noch zu ergänzen. Die Angaben zu Tätigkeiten aus Git sind nachweisbar; daraus lassen sich keine Arbeitsdauern ableiten.")
+p("Projekt: Olti Ismajlaj\nDokumentstand / Version: 16.11.2026 / 0.9")
+p("Arbeitsfassung: Das Arbeitsjournal enthält rückblickend angegebene Arbeitszeiten. Persönliche Reflexionen pro Arbeitstag und die endgültige Abgabeprüfung stehen noch aus.")
 heading("Inhalt")
 table(["Kapitel","Seite"],[
 ["1. Auftrag und Funktionsumfang","2"],["2. Applikationsstruktur und MVC","3"],
@@ -70,7 +70,7 @@ table(["Nr.","Anforderung und Umsetzung"],[
 ["13","DataController prüft die Sitzung vor jedem Datenabruf und jeder Änderung. Ohne Anmeldung folgt HTTP 401."],
 ["14-16","Web-Applikation mit HTML/CSS/JavaScript; asynchrone fetch-Anfragen; verständliche Beschriftungen, Lade- und Fehlermeldungen."],
 ["Permalinks","Produkte: index.php?view=product&id=SKU. Kategorien: index.php?view=category&id=ID. Die Kennung wird URL-kodiert."],
-["Dokumentation","Aufbau, API, Storyboard, Tests und Journalvorlage. Persönliche Zeitangaben und Reflexionen stehen noch aus."]],[80,410])
+["Dokumentation","Aufbau, API, Storyboard, Tests und Arbeitsjournal mit rückblickenden Zeitangaben. Persönliche Tagesreflexionen stehen noch aus."]],[80,410])
 p("Der Umfang folgt dem bereitgestellten Projektauftrag vom 20.10.2026. Das Bewertungsraster enthält 82 Projektpunkte; das Fachgespräch beeinflusst den Faktor. Die technische Umsetzung allein garantiert daher weder eine bestimmte Prozentzahl noch eine Note.")
 p("Das Frontend benötigt PHP 8 mit cURL, eine funktionierende Internetverbindung zur Schul-API und einen aktuellen Browser mit aktiviertem JavaScript. CSS und JavaScript liegen lokal; externe Schriftarten oder UI-Bibliotheken sind nicht erforderlich.")
 
@@ -160,18 +160,19 @@ p("Grenzen: Die Anwendung ist von der Verfügbarkeit und dem Verhalten der Schul
 p("Vor Abgabe zusätzlich manuell prüfen: Fachgespräch vorbereiten, alle Felder selbst erklären, Bedienung ausschliesslich per Tastatur, aktuelle Repository-Sichtbarkeit und tatsächlicher Abgabetermin.")
 
 page("8. Arbeitsjournal und Reflexion")
-p("Die folgende Vorlage enthält nur belegbare Tätigkeiten. Die persönlichen Arbeitszeiten und Reflexionen müssen von Olti ergänzt werden. Commit-Uhrzeiten belegen Speicherstände, nicht die gesamte Arbeitsdauer. Tage ohne Arbeit benötigen keine fingierten Tätigkeiten.")
-table(["Datum / Beleg","Nachweisbare Tätigkeit","Zeit"],[
-["07.11.2026, 09:42\n1d452f8","Projektstruktur erstellt.","Noch ergänzen"],
-["07.11.2026, 09:58\n68d55a5","Startseite und HomeController erstellt.","Noch ergänzen"],
-["07.11.2026, 10:52\n186b0d2","Login mit API und Fehlerbehandlung gespeichert.","Noch ergänzen"],
-["14.11.2026\nAktueller Projektstand","Anmeldeablauf, API-Zugriff, Produkt-/Kategorienverwaltung, Eingabeprüfung, Permalinks, Oberfläche, Tests und Dokumentationsentwurf ergänzt.","Eigene Prüf- und Lernzeit ergänzen"]],[140,260,90])
-heading("Reflexion pro tatsächlichem Arbeitstag")
-p("07.11.2026 - Eigene Reflexion ergänzen: Was gelang beim Aufbau? Was war beim Login schwierig? Wie wurde das Problem untersucht? Welche Erkenntnis hilft beim nächsten Arbeitsschritt?")
-p("14.11.2026 - Eigene Reflexion ergänzen: Welche Änderungen wurden selbst nachvollzogen und getestet? Welche Zusammenhänge zwischen View, Controller und Model sind klar? Was muss für das Fachgespräch noch geübt werden?")
-heading("Weitere Arbeitstage")
-table(["Datum","Tätigkeit","Dauer","Eigene Reflexion"],[["Ausfüllen","Nur tatsächlich geleistete Arbeit eintragen","Ausfüllen","Ergebnis, Schwierigkeiten, nächste Schritte"]],[75,185,75,155])
-p("Hinweis zur Planung: Sinnvolle nächste Arbeitsschritte sind das eigenständige Prüfen jeder Funktion, das Ergänzen der Dokumentation und das Vorbereiten des Fachgesprächs. Diese Planung ist kein Nachweis bereits geleisteter Arbeit.")
+p("Die Arbeitszeiten wurden rückblickend mit ungefähr einer Stunde pro Arbeitstag angegeben. Die folgende Aufstellung umfasst Samstag, 07.11.2026, sowie Mittwoch bis Freitag, 11.-13.11.2026. Die Gesamtdauer beträgt ungefähr vier Stunden.")
+table(["Arbeitstag","Tätigkeit / Grundlage","Arbeitszeit"],[
+["Samstag, 07.11.2026","Projektstruktur, Startseite, HomeController und Login mit API-Anbindung. Diese Schritte sind durch drei Git-Commits vom 07.11.2026 belegt.","ca. 1 Stunde"],
+["Mittwoch, 11.11.2026","Arbeit am Projekt nach eigener rückblickender Angabe; einzelne Tätigkeiten sind diesem Tag nicht mehr eindeutig zuzuordnen.","ca. 1 Stunde"],
+["Donnerstag, 12.11.2026","Arbeit am Projekt nach eigener rückblickender Angabe; einzelne Tätigkeiten sind diesem Tag nicht mehr eindeutig zuzuordnen.","ca. 1 Stunde"],
+["Freitag, 13.11.2026","Arbeit am Projekt nach eigener rückblickender Angabe; einzelne Tätigkeiten sind diesem Tag nicht mehr eindeutig zuzuordnen.","ca. 1 Stunde"],
+["Gesamt","Vier angegebene Arbeitstage","ca. 4 Stunden"]],[125,275,90])
+heading("Nachvollziehbarer Projektverlauf")
+p("Die Commits 1d452f8, 68d55a5 und 186b0d2 dokumentieren am 07.11.2026 den Aufbau der Projektstruktur, die Startseite und die Login-Anbindung. Die Uhrzeiten der Commits sind Speicherzeitpunkte und kein Arbeitszeitnachweis.")
+p("Im anschliessenden Projektverlauf wurde ein Klammerfehler im Login-JavaScript behoben. Danach wurden Produkt- und Kategorienverwaltung, geschützte Datenzugriffe, Formulare, Permalinks und die Dokumentation ergänzt. Tests gegen die Schul-API bestätigten die Kernabläufe. Eine Besonderheit beim Erstellen aktiver Kategorien erforderte eine zusätzliche Statuskorrektur.")
+heading("Rückblick auf die Umsetzung")
+p("Der Loginfehler zeigt, dass zuerst die JavaScript-Syntax und anschliessend die Sitzung geprüft werden müssen. Bei der API-Anbindung war die Prüfung echter Antworten wichtig, da das Verhalten beim Erstellen einer Kategorie von der Dokumentation abwich. Wiederholbare Tests halfen, die Korrektur zu überprüfen.")
+p("Dieser Rückblick beschreibt die beobachteten technischen Ergebnisse. Persönliche Reflexionen pro Arbeitstag wurden nicht separat festgehalten; sie lassen sich aus der Git-Historie nicht ableiten.")
 
 page("9. Verzeichnisse, Quellen und Abgabe")
 heading("Abbildungsverzeichnis")

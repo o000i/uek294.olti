@@ -35,7 +35,7 @@ Die neue Kategorie wird nach dem Anlegen eindeutig über den Vergleich alter und
 - `scripts/build_docs.py`: erzeugt beide Fassungen; benötigt Python und ReportLab. Inhaltliche Anpassungen vor einer Neuerzeugung hier vornehmen, da die Markdown-Datei dabei überschrieben wird.
 - `docs/images/`: Abbildungen aus der Anwendung.
 
-Das Arbeitsjournal enthält belegte Git-Schritte vom 07.11.2026 und den aktuellen Projektstand. Tatsächliche persönliche Arbeitszeiten und eigene Reflexionen fehlen noch und müssen ergänzt werden. Git-Zeitstempel sind kein Nachweis von Arbeitsdauern.
+Das Arbeitsjournal enthält belegte Git-Schritte vom 07.11.2026 und den aktuellen Projektstand. Für den 07., 11., 12. und 13.11.2026 sind jeweils ungefähr eine Stunde nach rückblickender Angabe erfasst (insgesamt ca. vier Stunden). Persönliche Tagesreflexionen fehlen noch. Git-Zeitstempel sind kein Nachweis von Arbeitsdauern.
 
 ## Tests
 
