@@ -50,7 +50,7 @@ def footer(canvas,doc):
 p("PROJEKTDOKUMENTATION · ÜK 294","SmallCustom")
 p("Produktverwaltung","TitleCustom")
 p("Web-Frontend für Produkte und Kategorien")
-p("Projekt: Olti Ismajlaj\nDatum: 11.11.2026")
+p("Projekt: Olti Ismajlaj\nDatum: 13.11.2026")
 heading("Inhalt")
 table(["Kapitel","Seite"],[
 ["1. Auftrag und Funktionsumfang","2"],["2. Applikationsstruktur und MVC","3"],

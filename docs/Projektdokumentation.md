@@ -5,7 +5,7 @@ Produktverwaltung
 Web-Frontend für Produkte und Kategorien
 
 Projekt: Olti Ismajlaj
-Datum: 11.11.2026
+Datum: 13.11.2026
 
 ## Inhalt
 
