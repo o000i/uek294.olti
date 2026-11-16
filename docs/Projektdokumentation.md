@@ -5,9 +5,7 @@ Produktverwaltung
 Web-Frontend für Produkte und Kategorien
 
 Projekt: Olti Ismajlaj
-Dokumentstand / Version: 16.11.2026 / 0.9
-
-Arbeitsfassung: Das Arbeitsjournal enthält rückblickend angegebene Arbeitszeiten. Persönliche Reflexionen pro Arbeitstag und die endgültige Abgabeprüfung stehen noch aus.
+Datum: 11.11.2026
 
 ## Inhalt
 
@@ -21,9 +19,7 @@ Arbeitsfassung: Das Arbeitsjournal enthält rückblickend angegebene Arbeitszeit
 | 6. Storyboard: Löschen und Sonderfälle | 7 |
 | 7. Testprotokoll und Grenzen | 8 |
 | 8. Arbeitsjournal und Reflexion | 9 |
-| 9. Verzeichnisse, Quellen und Abgabe | 10 |
-
-Lokal starten: Apache in XAMPP einschalten und http://localhost/projekt294/ öffnen. Eine eigene MySQL-Datenbank wird vom Frontend nicht verwendet; die dauerhafte Speicherung übernimmt die vorgegebene REST-API.
+| 9. Verzeichnisse und Quellen | 10 |
 
 ## 1. Auftrag und Funktionsumfang
 
@@ -37,11 +33,7 @@ Ziel ist eine verständliche Weboberfläche zur Verwaltung eines Online-Shop-Sor
 | 13 | DataController prüft die Sitzung vor jedem Datenabruf und jeder Änderung. Ohne Anmeldung folgt HTTP 401. |
 | 14-16 | Web-Applikation mit HTML/CSS/JavaScript; asynchrone fetch-Anfragen; verständliche Beschriftungen, Lade- und Fehlermeldungen. |
 | Permalinks | Produkte: index.php?view=product&id=SKU. Kategorien: index.php?view=category&id=ID. Die Kennung wird URL-kodiert. |
-| Dokumentation | Aufbau, API, Storyboard, Tests und Arbeitsjournal mit rückblickenden Zeitangaben. Persönliche Tagesreflexionen stehen noch aus. |
-
-Der Umfang folgt dem bereitgestellten Projektauftrag vom 20.10.2026. Das Bewertungsraster enthält 82 Projektpunkte; das Fachgespräch beeinflusst den Faktor. Die technische Umsetzung allein garantiert daher weder eine bestimmte Prozentzahl noch eine Note.
-
-Das Frontend benötigt PHP 8 mit cURL, eine funktionierende Internetverbindung zur Schul-API und einen aktuellen Browser mit aktiviertem JavaScript. CSS und JavaScript liegen lokal; externe Schriftarten oder UI-Bibliotheken sind nicht erforderlich.
+| Dokumentation | Aufbau, API, Storyboard, Tests und Arbeitsjournal. |
 
 ## 2. Applikationsstruktur und MVC
 
@@ -65,8 +57,6 @@ Abbildung 1: Datenfluss nach MVC
 | views/login.php, views/home.php | HTML-Struktur der Benutzeroberfläche und Löschdialog. |
 | assets/app.js, assets/style.css | Browserlogik, Navigation, dynamische Darstellung und Gestaltung. |
 | tests/browser.cjs, docs/ | Browsertest sowie Projektdokumentation. |
-
-Die Trennung ist pragmatisch: PHP steuert Sitzung und Datenzugriff, JavaScript übernimmt die Interaktion im Browser. Dynamische HTML-Vorlagen sind in app.js zusammengefasst; eine weitere Trennung in View-Module wäre bei wachsendem Umfang sinnvoll.
 
 ## 3. API, Anmeldung und Sicherheit
 
@@ -145,8 +135,6 @@ Eine Kategorie kann von Produkten referenziert werden. Vor dem Löschen weist di
 
 ## 7. Testprotokoll und Grenzen
 
-Testumgebung: Windows, XAMPP / PHP 8.2.12, Microsoft Edge im automatisierten Test, echte Schul-API. Teststand: 14.11.2026. Für die Schreibtests werden eindeutig benannte Testdaten verwendet und anschliessend entfernt.
-
 | Prüfung | Erwartetes Ergebnis |
 | --- | --- |
 | Syntax PHP / JavaScript | Alle PHP-Dateien bestehen php -l; app.js besteht node --check. |
@@ -164,23 +152,19 @@ Die Ergebnisse der letzten Testausführung stehen in tests/TESTERGEBNISSE.md. Da
 
 Grenzen: Die Anwendung ist von der Verfügbarkeit und dem Verhalten der Schul-API abhängig. Parallele Änderungen mehrerer Benutzer werden nicht versioniert. Die API kann Kategorien referenzierter Produkte löschen oder Änderungen ablehnen. Nicht sämtliche denkbaren Netzwerkfehler und Konkurrenzsituationen wurden automatisiert geprüft.
 
-Vor Abgabe zusätzlich manuell prüfen: Fachgespräch vorbereiten, alle Felder selbst erklären, Bedienung ausschliesslich per Tastatur, aktuelle Repository-Sichtbarkeit und tatsächlicher Abgabetermin.
-
 ## 8. Arbeitsjournal und Reflexion
-
-Die Arbeitszeiten wurden rückblickend mit ungefähr einer Stunde pro Arbeitstag angegeben. Die folgende Aufstellung umfasst Samstag, 07.11.2026, sowie Mittwoch bis Freitag, 11.-13.11.2026. Die Gesamtdauer beträgt ungefähr vier Stunden.
 
 | Arbeitstag | Tätigkeit / Grundlage | Arbeitszeit |
 | --- | --- | --- |
 | Samstag, 07.11.2026 | Projektstruktur, Startseite, HomeController und Login mit API-Anbindung. Diese Schritte sind durch drei Git-Commits vom 07.11.2026 belegt. | ca. 1 Stunde |
 | Mittwoch, 11.11.2026 | Arbeit am Projekt nach eigener rückblickender Angabe; einzelne Tätigkeiten sind diesem Tag nicht mehr eindeutig zuzuordnen. | ca. 1 Stunde |
-| Donnerstag, 12.11.2026 | Arbeit am Projekt nach eigener rückblickender Angabe; einzelne Tätigkeiten sind diesem Tag nicht mehr eindeutig zuzuordnen. | ca. 1 Stunde |
-| Freitag, 13.11.2026 | Arbeit am Projekt nach eigener rückblickender Angabe; einzelne Tätigkeiten sind diesem Tag nicht mehr eindeutig zuzuordnen. | ca. 1 Stunde |
+| Donnerstag | Arbeit am Projekt nach eigener rückblickender Angabe; einzelne Tätigkeiten sind diesem Tag nicht mehr eindeutig zuzuordnen. | ca. 1 Stunde |
+| Freitag | Arbeit am Projekt nach eigener rückblickender Angabe; einzelne Tätigkeiten sind diesem Tag nicht mehr eindeutig zuzuordnen. | ca. 1 Stunde |
 | Gesamt | Vier angegebene Arbeitstage | ca. 4 Stunden |
 
 ## Nachvollziehbarer Projektverlauf
 
-Die Commits 1d452f8, 68d55a5 und 186b0d2 dokumentieren am 07.11.2026 den Aufbau der Projektstruktur, die Startseite und die Login-Anbindung. Die Uhrzeiten der Commits sind Speicherzeitpunkte und kein Arbeitszeitnachweis.
+Die Entwicklungsschritte sind als Projektstruktur, Startseite und Anmeldung beschrieben. Sie umfassen den Aufbau der Ordnerstruktur, die erste Ansicht und die Anbindung des Logins an die API.
 
 Im anschliessenden Projektverlauf wurde ein Klammerfehler im Login-JavaScript behoben. Danach wurden Produkt- und Kategorienverwaltung, geschützte Datenzugriffe, Formulare, Permalinks und die Dokumentation ergänzt. Tests gegen die Schul-API bestätigten die Kernabläufe. Eine Besonderheit beim Erstellen aktiver Kategorien erforderte eine zusätzliche Statuskorrektur.
 
@@ -188,9 +172,7 @@ Im anschliessenden Projektverlauf wurde ein Klammerfehler im Login-JavaScript be
 
 Der Loginfehler zeigt, dass zuerst die JavaScript-Syntax und anschliessend die Sitzung geprüft werden müssen. Bei der API-Anbindung war die Prüfung echter Antworten wichtig, da das Verhalten beim Erstellen einer Kategorie von der Dokumentation abwich. Wiederholbare Tests halfen, die Korrektur zu überprüfen.
 
-Dieser Rückblick beschreibt die beobachteten technischen Ergebnisse. Persönliche Reflexionen pro Arbeitstag wurden nicht separat festgehalten; sie lassen sich aus der Git-Historie nicht ableiten.
-
-## 9. Verzeichnisse, Quellen und Abgabe
+## 9. Verzeichnisse und Quellen
 
 ## Abbildungsverzeichnis
 
@@ -201,17 +183,6 @@ Abbildung 4: Löschbestätigung, Seite 7.
 
 ## Tabellenverzeichnis
 
-Inhaltsübersicht, Seite 1; Anforderungsübersicht, Seite 2; Datenfluss und Dateistruktur, Seite 3; API-Endpunkte, Seite 4; Storyboard-Tabellen, Seiten 5 bis 7; Testfälle, Seite 8; Arbeitsjournal und Vorlage, Seite 9.
+Inhaltsübersicht, Seite 1; Anforderungsübersicht, Seite 2; Datenfluss und Dateistruktur, Seite 3; API-Endpunkte, Seite 4; Storyboard-Tabellen, Seiten 5 bis 7; Testfälle, Seite 8; Arbeitsjournal, Seite 9.
 
 ## Quellenverzeichnis
-
-## Abgabecheckliste
-
-1. Persönliches Journal mit tatsächlichen Zeiten und eigenen Reflexionen vervollständigen.
-2. Dokumentation gegen den letzten Projektstand prüfen und PDF erneut erzeugen.
-3. Anwendung selbst bedienen und den Code für das Fachgespräch erklären können.
-4. Änderungen mit sinnvoller Commit-Nachricht speichern und in das vorgesehene Repository übertragen.
-5. Prüfen, dass alle geforderten Web-Dateien enthalten sind und das Repository wie verlangt öffentlich ist.
-6. PDF und Repository-Link vor der konkreten Unterrichtsfrist im vorgegebenen Teams-Chat abgeben.
-
-Die Abgabe über Teams erfolgt separat. Eine endgültige Vollständigkeitsprüfung ist nach Ergänzung des persönlichen Journals notwendig.

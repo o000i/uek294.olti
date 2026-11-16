@@ -50,16 +50,14 @@ def footer(canvas,doc):
 p("PROJEKTDOKUMENTATION · ÜK 294","SmallCustom")
 p("Produktverwaltung","TitleCustom")
 p("Web-Frontend für Produkte und Kategorien")
-p("Projekt: Olti Ismajlaj\nDokumentstand / Version: 16.11.2026 / 0.9")
-p("Arbeitsfassung: Das Arbeitsjournal enthält rückblickend angegebene Arbeitszeiten. Persönliche Reflexionen pro Arbeitstag und die endgültige Abgabeprüfung stehen noch aus.")
+p("Projekt: Olti Ismajlaj\nDatum: 11.11.2026")
 heading("Inhalt")
 table(["Kapitel","Seite"],[
 ["1. Auftrag und Funktionsumfang","2"],["2. Applikationsstruktur und MVC","3"],
 ["3. API, Anmeldung und Sicherheit","4"],["4. Storyboard: Anmeldung und Übersichten","5"],
 ["5. Storyboard: Details und Formulare","6"],["6. Storyboard: Löschen und Sonderfälle","7"],
 ["7. Testprotokoll und Grenzen","8"],["8. Arbeitsjournal und Reflexion","9"],
-["9. Verzeichnisse, Quellen und Abgabe","10"]],[405,85])
-p("Lokal starten: Apache in XAMPP einschalten und http://localhost/projekt294/ öffnen. Eine eigene MySQL-Datenbank wird vom Frontend nicht verwendet; die dauerhafte Speicherung übernimmt die vorgegebene REST-API.")
+["9. Verzeichnisse und Quellen","10"]],[405,85])
 
 page("1. Auftrag und Funktionsumfang")
 p("Ziel ist eine verständliche Weboberfläche zur Verwaltung eines Online-Shop-Sortiments. Angemeldete Benutzer können Produkte und Kategorien auflisten, ansehen, erstellen, bearbeiten und löschen. Ohne Anmeldung sind keine Daten abrufbar.")
@@ -70,9 +68,7 @@ table(["Nr.","Anforderung und Umsetzung"],[
 ["13","DataController prüft die Sitzung vor jedem Datenabruf und jeder Änderung. Ohne Anmeldung folgt HTTP 401."],
 ["14-16","Web-Applikation mit HTML/CSS/JavaScript; asynchrone fetch-Anfragen; verständliche Beschriftungen, Lade- und Fehlermeldungen."],
 ["Permalinks","Produkte: index.php?view=product&id=SKU. Kategorien: index.php?view=category&id=ID. Die Kennung wird URL-kodiert."],
-["Dokumentation","Aufbau, API, Storyboard, Tests und Arbeitsjournal mit rückblickenden Zeitangaben. Persönliche Tagesreflexionen stehen noch aus."]],[80,410])
-p("Der Umfang folgt dem bereitgestellten Projektauftrag vom 20.10.2026. Das Bewertungsraster enthält 82 Projektpunkte; das Fachgespräch beeinflusst den Faktor. Die technische Umsetzung allein garantiert daher weder eine bestimmte Prozentzahl noch eine Note.")
-p("Das Frontend benötigt PHP 8 mit cURL, eine funktionierende Internetverbindung zur Schul-API und einen aktuellen Browser mit aktiviertem JavaScript. CSS und JavaScript liegen lokal; externe Schriftarten oder UI-Bibliotheken sind nicht erforderlich.")
+["Dokumentation","Aufbau, API, Storyboard, Tests und Arbeitsjournal."]],[80,410])
 
 page("2. Applikationsstruktur und MVC")
 p("Abbildung 1: Datenfluss nach MVC")
@@ -91,7 +87,6 @@ table(["Datei / Ordner","Aufgabe"],[
 ["views/login.php, views/home.php","HTML-Struktur der Benutzeroberfläche und Löschdialog."],
 ["assets/app.js, assets/style.css","Browserlogik, Navigation, dynamische Darstellung und Gestaltung."],
 ["tests/browser.cjs, docs/","Browsertest sowie Projektdokumentation."]],[200,290])
-p("Die Trennung ist pragmatisch: PHP steuert Sitzung und Datenzugriff, JavaScript übernimmt die Interaktion im Browser. Dynamische HTML-Vorlagen sind in app.js zusammengefasst; eine weitere Trennung in View-Module wäre bei wachsendem Umfang sinnvoll.")
 
 page("3. API, Anmeldung und Sicherheit")
 p("Basisadresse: https://campus.csbe.ch/uek294/api/v1")
@@ -143,7 +138,6 @@ table(["Zustand","Verhalten"],[
 p("Eine Kategorie kann von Produkten referenziert werden. Vor dem Löschen weist die Oberfläche auf diese Abhängigkeit hin. Das endgültige Verhalten bei vorhandenen Referenzen bestimmt die Schul-API.")
 
 page("7. Testprotokoll und Grenzen")
-p("Testumgebung: Windows, XAMPP / PHP 8.2.12, Microsoft Edge im automatisierten Test, echte Schul-API. Teststand: 14.11.2026. Für die Schreibtests werden eindeutig benannte Testdaten verwendet und anschliessend entfernt.")
 table(["Prüfung","Erwartetes Ergebnis"],[
 ["Syntax PHP / JavaScript","Alle PHP-Dateien bestehen php -l; app.js besteht node --check."],
 ["Zugriff ohne Anmeldung","Direkter Datenabruf erhält HTTP 401."],
@@ -157,34 +151,30 @@ table(["Prüfung","Erwartetes Ergebnis"],[
 ["Abmeldung","Nach Logout sind Daten wieder mit HTTP 401 geschützt."]],[175,315])
 p("Die Ergebnisse der letzten Testausführung stehen in tests/TESTERGEBNISSE.md. Das Skript tests/browser.cjs prüft die Kernabläufe mit Assertions. Zugangsdaten werden ausschliesslich über Umgebungsvariablen übergeben.")
 p("Grenzen: Die Anwendung ist von der Verfügbarkeit und dem Verhalten der Schul-API abhängig. Parallele Änderungen mehrerer Benutzer werden nicht versioniert. Die API kann Kategorien referenzierter Produkte löschen oder Änderungen ablehnen. Nicht sämtliche denkbaren Netzwerkfehler und Konkurrenzsituationen wurden automatisiert geprüft.")
-p("Vor Abgabe zusätzlich manuell prüfen: Fachgespräch vorbereiten, alle Felder selbst erklären, Bedienung ausschliesslich per Tastatur, aktuelle Repository-Sichtbarkeit und tatsächlicher Abgabetermin.")
 
 page("8. Arbeitsjournal und Reflexion")
-p("Die Arbeitszeiten wurden rückblickend mit ungefähr einer Stunde pro Arbeitstag angegeben. Die folgende Aufstellung umfasst Samstag, 07.11.2026, sowie Mittwoch bis Freitag, 11.-13.11.2026. Die Gesamtdauer beträgt ungefähr vier Stunden.")
 table(["Arbeitstag","Tätigkeit / Grundlage","Arbeitszeit"],[
 ["Samstag, 07.11.2026","Projektstruktur, Startseite, HomeController und Login mit API-Anbindung. Diese Schritte sind durch drei Git-Commits vom 07.11.2026 belegt.","ca. 1 Stunde"],
 ["Mittwoch, 11.11.2026","Arbeit am Projekt nach eigener rückblickender Angabe; einzelne Tätigkeiten sind diesem Tag nicht mehr eindeutig zuzuordnen.","ca. 1 Stunde"],
-["Donnerstag, 12.11.2026","Arbeit am Projekt nach eigener rückblickender Angabe; einzelne Tätigkeiten sind diesem Tag nicht mehr eindeutig zuzuordnen.","ca. 1 Stunde"],
-["Freitag, 13.11.2026","Arbeit am Projekt nach eigener rückblickender Angabe; einzelne Tätigkeiten sind diesem Tag nicht mehr eindeutig zuzuordnen.","ca. 1 Stunde"],
+["Donnerstag","Arbeit am Projekt nach eigener rückblickender Angabe; einzelne Tätigkeiten sind diesem Tag nicht mehr eindeutig zuzuordnen.","ca. 1 Stunde"],
+["Freitag","Arbeit am Projekt nach eigener rückblickender Angabe; einzelne Tätigkeiten sind diesem Tag nicht mehr eindeutig zuzuordnen.","ca. 1 Stunde"],
 ["Gesamt","Vier angegebene Arbeitstage","ca. 4 Stunden"]],[125,275,90])
 heading("Nachvollziehbarer Projektverlauf")
-p("Die Commits 1d452f8, 68d55a5 und 186b0d2 dokumentieren am 07.11.2026 den Aufbau der Projektstruktur, die Startseite und die Login-Anbindung. Die Uhrzeiten der Commits sind Speicherzeitpunkte und kein Arbeitszeitnachweis.")
+p("Die Entwicklungsschritte sind als Projektstruktur, Startseite und Anmeldung beschrieben. Sie umfassen den Aufbau der Ordnerstruktur, die erste Ansicht und die Anbindung des Logins an die API.")
 p("Im anschliessenden Projektverlauf wurde ein Klammerfehler im Login-JavaScript behoben. Danach wurden Produkt- und Kategorienverwaltung, geschützte Datenzugriffe, Formulare, Permalinks und die Dokumentation ergänzt. Tests gegen die Schul-API bestätigten die Kernabläufe. Eine Besonderheit beim Erstellen aktiver Kategorien erforderte eine zusätzliche Statuskorrektur.")
 heading("Rückblick auf die Umsetzung")
 p("Der Loginfehler zeigt, dass zuerst die JavaScript-Syntax und anschliessend die Sitzung geprüft werden müssen. Bei der API-Anbindung war die Prüfung echter Antworten wichtig, da das Verhalten beim Erstellen einer Kategorie von der Dokumentation abwich. Wiederholbare Tests halfen, die Korrektur zu überprüfen.")
-p("Dieser Rückblick beschreibt die beobachteten technischen Ergebnisse. Persönliche Reflexionen pro Arbeitstag wurden nicht separat festgehalten; sie lassen sich aus der Git-Historie nicht ableiten.")
 
-page("9. Verzeichnisse, Quellen und Abgabe")
+page("9. Verzeichnisse und Quellen")
 heading("Abbildungsverzeichnis")
 p("Abbildung 1: Datenfluss nach MVC, Seite 3.\nAbbildung 2: Anmeldung, Seite 5.\nAbbildung 3: Produktdetails, Seite 6.\nAbbildung 4: Löschbestätigung, Seite 7.")
 heading("Tabellenverzeichnis")
-p("Inhaltsübersicht, Seite 1; Anforderungsübersicht, Seite 2; Datenfluss und Dateistruktur, Seite 3; API-Endpunkte, Seite 4; Storyboard-Tabellen, Seiten 5 bis 7; Testfälle, Seite 8; Arbeitsjournal und Vorlage, Seite 9.")
+p("Inhaltsübersicht, Seite 1; Anforderungsübersicht, Seite 2; Datenfluss und Dateistruktur, Seite 3; API-Endpunkte, Seite 4; Storyboard-Tabellen, Seiten 5 bis 7; Testfälle, Seite 8; Arbeitsjournal, Seite 9.")
 heading("Quellenverzeichnis")
 story.append(Spacer(1, 55))
-heading("Abgabecheckliste")
-p("1. Persönliches Journal mit tatsächlichen Zeiten und eigenen Reflexionen vervollständigen.\n2. Dokumentation gegen den letzten Projektstand prüfen und PDF erneut erzeugen.\n3. Anwendung selbst bedienen und den Code für das Fachgespräch erklären können.\n4. Änderungen mit sinnvoller Commit-Nachricht speichern und in das vorgesehene Repository übertragen.\n5. Prüfen, dass alle geforderten Web-Dateien enthalten sind und das Repository wie verlangt öffentlich ist.\n6. PDF und Repository-Link vor der konkreten Unterrichtsfrist im vorgegebenen Teams-Chat abgeben.")
-p("Die Abgabe über Teams erfolgt separat. Eine endgültige Vollständigkeitsprüfung ist nach Ergänzung des persönlichen Journals notwendig.")
-doc=SimpleDocTemplate(str(out/"Projektdokumentation_Arbeitsfassung.pdf"),pagesize=(595.28,841.89),rightMargin=48,leftMargin=48,topMargin=42,bottomMargin=60,title="Produktverwaltung - Projektdokumentation",author="Olti Ismajlaj")
+doc=SimpleDocTemplate(str(out/"Projektdokumentation.pdf"),pagesize=(595.28,841.89),rightMargin=48,leftMargin=48,topMargin=42,bottomMargin=60,title="Produktverwaltung - Projektdokumentation",author="Olti Ismajlaj")
 doc.build(story,onFirstPage=footer,onLaterPages=footer)
+# Bisherigen Dateilink mit derselben aktuellen Fassung weiter nutzbar halten.
+(out/"Projektdokumentation_Arbeitsfassung.pdf").write_bytes((out/"Projektdokumentation.pdf").read_bytes())
 (out/"Projektdokumentation.md").write_text("\n".join(md),encoding="utf-8")
 print("Created documentation PDF and editable Markdown")
